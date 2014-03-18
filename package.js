@@ -1,28 +1,65 @@
+
 Package.describe({
-	summary: "Latest version of X-Editable for Bootstrap with wysihtml5 rich text editor"
+  summary: "x-editable bootstrap plugin meteor.js package"
 });
 
-Package.on_use(function (api){
-	// Package needs jQuery
-	api.use(['jquery'], 'client')
 
-	//x-editable
-	api.add_files('lib/bootstrap-editable/css/bootstrap-editable.css', 'client');
-	api.add_files('lib/bootstrap-editable/js/bootstrap-editable.js', 'client', {bare:true});
-	api.add_files('lib/bootstrap-editable/img/clear.png', 'client');
-	api.add_files('lib/bootstrap-editable/img/loading.gif', 'client');
-	
-	//address
-	api.add_files('lib/address/address.css', 'client');
-	api.add_files('lib/address/address.js', 'client', {bare:true});
+Package.on_use(function (api) {
 
-	//wysihtml5
-	api.add_files('lib/wysihtml5/wysihtml5.js', 'client', {bare:true});  
-	api.add_files('lib/wysihtml5/bootstrap-wysihtml5-0.0.2/wysiwyg-color.css', 'client');
-	api.add_files('lib/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js', 'client', {bare:true});
-	api.add_files('lib/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css', 'client');
-	api.add_files('lib/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js', 'client', {bare:true});
-	
-	//override image paths
-	api.add_files('path-override.css', 'client');  
+  // package dependencies
+  // --------------------------------------------------------------------------
+  api.use([
+    'jquery',
+    'unvael-bootstrap'
+  ], 'client');
+
+
+  // bootstrap x-editable core lib
+  // --------------------------------------------------------------------------
+  api.add_files('lib/bootstrap-editable/css/bootstrap-editable.css', 'client');
+  api.add_files('lib/bootstrap-editable/js/bootstrap-editable.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/editable-plugin.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/editable-utils.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/editable-container.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/editable-form.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/editable-inline.js', 'client', {bare:true});
+  // api.add_files('lib/bootstrap-editable/js/editable-popover.js', 'client', {bare:true});
+
+
+  // fields + input extensions
+  // --------------------------------------------------------------------------
+  // base input class (required)
+  api.add_files('lib/bootstrap-editable/js/inputs/abstract-input.js', 'client', {bare:true});
+
+  // api.add_files('lib/bootstrap-editable/js/inputs/list-input.js', 'client', {bare:true});
+  // api.add_files('lib/bootstrap-editable/js/inputs/list-select-input.js', 'client', {bare:true});
+  // api.add_files('lib/bootstrap-editable/js/inputs/list-select2-input.js', 'client', {bare:true});
+  // api.add_files('lib/bootstrap-editable/js/inputs/list-checkboxes-input.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/inputs/text-input.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/inputs/textarea-input.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/inputs/html5-inputs.js', 'client', {bare:true});
+
+  /*
+  // datepicker-bootstrap lib
+  api.add_files('lib/bootstrap-editable/js/bootstrap-datepicker.js', 'client', {bare:true});
+  // date + datetime fields
+  api.add_files('lib/bootstrap-editable/js/inputs/date-input.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/inputs/datetime-picker-input.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/inputs/datetime-input.js', 'client', {bare:true});
+  api.add_files('lib/bootstrap-editable/js/inputs/combodate-input.js', 'client', {bare:true});
+
+  // typeahead input fields
+  api.add_files('lib/bootstrap-editable/js/inputs/typeahead-input.js', 'client');
+  */
+
+
+  // images
+  // --------------------------------------------------------------------------
+  api.add_files('lib/bootstrap-editable/img/clear.png', 'client');
+  api.add_files('lib/bootstrap-editable/img/loading.gif', 'client');
+
+
+  // image path overrides
+  api.add_files('path-override.css', 'client');
+
 });
